@@ -1,0 +1,89 @@
+﻿<Window x:Class="Group_Project.View.StudentMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Group_Project.View"
+        xmlns:vm="clr-namespace:Group_Project.ViewModel" 
+        mc:Ignorable="d"
+        Title="StudentMain" Height="500" Width="800">
+
+    <Window.DataContext>
+        <vm:StudentMainVM/>
+    </Window.DataContext>
+
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Image/bg.jpg" />
+        </Grid.Background>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+                <TextBlock FontFamily="verdana" FontWeight="SemiBold" Foreground="white" Margin="10 10 0 10" VerticalAlignment="Center" Text="UserID :"/>
+                <TextBlock FontFamily="verdana" FontWeight="SemiBold" Foreground="white"  TextWrapping="Wrap" Text="{Binding Studentid}" VerticalAlignment="Center" Margin="10 10 590 10"/>
+                <Button Style="{StaticResource btn1}" Width="100" Height="40" VerticalAlignment="Center" Content="Logout" Margin="5" Command="{Binding LogOutCommand}"/>
+            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock FontFamily="verdana" FontWeight="SemiBold" Foreground="White" Width="100"  Text="First Name" Margin="5"/>
+                            <TextBlock FontFamily="verdana" FontWeight="SemiBold" Foreground="White" Width="250" Text="{Binding FirstName}" Margin="5"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock FontFamily="verdana" FontWeight="SemiBold" Foreground="White" Width="100"  Text="Last Name" Margin="5"/>
+                            <TextBlock Width="250" Text="{Binding LastName}" Foreground="White" Margin="5"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock FontFamily="verdana" FontWeight="SemiBold" Foreground="White" Width="100"  Text="Age" Margin="5"/>
+                            <TextBlock FontFamily="verdana" FontWeight="SemiBold" Foreground="White" Width="250" Text="{Binding Age}" Margin="5"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock FontFamily="verdana" FontWeight="SemiBold" Foreground="White" Width="100"   Text="Student ID" Margin="5"/>
+                            <TextBlock FontFamily="verdana" FontWeight="SemiBold" Foreground="White" Width="250" Text="{Binding Studentid}" Margin="5"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock FontFamily="verdana" FontWeight="SemiBold" Foreground="White" Width="100"  Text="GPA" Margin="5"/>
+                            <TextBlock FontFamily="verdana" FontWeight="SemiBold" Foreground="White" Width="250"  Text="{Binding Gpa}" Margin="5"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock FontFamily="verdana" FontWeight="SemiBold" Foreground="White" Width="100"  Text="Password" Margin="5"/>
+                            <TextBlock FontFamily="verdana" FontWeight="SemiBold" Foreground="White" Width="250"  Text="{Binding Passwprd}" Margin="5"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Width="100" FontFamily="verdana" FontWeight="SemiBold" Foreground="White" Text="First Name" Margin="5"/>
+                            <TextBox Style="{StaticResource txtbox}" Width="200" Text="{Binding FirstName}" Margin="5"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Width="100" FontFamily="verdana" FontWeight="SemiBold" Foreground="White" Text="Last Name" Margin="5"/>
+                            <TextBox Style="{StaticResource txtbox}" Width="200" Text="{Binding LastName}" Margin="5"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Width="100" FontFamily="verdana" FontWeight="SemiBold" Foreground="White" Text="Age" Margin="5"/>
+                            <TextBox Style="{StaticResource txtbox}" Width="200" Text="{Binding Age}" Margin="5"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Width="100" FontFamily="verdana" FontWeight="SemiBold" Foreground="White" Text="Password" Margin="5"/>
+                            <TextBox Style="{StaticResource txtbox}" Width="200" Text="{Binding Passwprd}" Margin="5"/>
+                        </StackPanel>
+                        <Button Margin="10" Content="Save Changes" Width="200" Height="40" Style="{StaticResource btn1}" Command="{Binding UpdateStudentCommand}"/>
+
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+            <Button Style="{StaticResource btn1}" Margin="10" Height="40" Command="{Binding ShowresCommand}" Content="Results Details" Width="200"/>
+        </StackPanel>
+
+
+
+    </Grid>
+</Window>

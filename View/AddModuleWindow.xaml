@@ -1,0 +1,74 @@
+﻿<Window x:Class="Group_Project.View.AddModuleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Group_Project.View"
+        xmlns:vm="clr-namespace:Group_Project.ViewModel"
+        mc:Ignorable="d"
+        Title="AddModuleWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:AddModuleWindowVM/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Image/bg.jpg" />
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0"/>
+
+
+        <StackPanel Margin="10"   Grid.Column="0"  VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="verdana" FontSize="15" Foreground="White" FontWeight="SemiBold"  Margin="5"  Padding="10" Text="Module Name" Width="143"/>
+                <TextBox Style="{StaticResource txtbox}" Foreground="Black"  Width="200"  VerticalContentAlignment="Center" Text="{Binding Name}" Margin="5"   />
+
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal">
+                <TextBlock FontFamily="verdana" FontSize="15" Foreground="White" FontWeight="SemiBold" Margin="5"  Padding="10" Text="Credit" Width="80"/>
+                <TextBox Style="{StaticResource txtbox}"  Foreground="Black" Width="200" VerticalContentAlignment="Center" Text="{Binding Credit}" Margin="69 5 5 5"   RenderTransformOrigin="0.495,0.573" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+
+                <TextBlock FontFamily="verdana" FontSize="15" Foreground="White" FontWeight="SemiBold" Width="121" Margin="5"  Padding="10" Text="Module Code" />
+                <TextBox Foreground="Black" VerticalContentAlignment="Center" Text="{Binding Code}" Margin="27 5 5 5"  Style="{StaticResource txtbox}"  Width="200"/>
+
+            </StackPanel>
+            <Button Width="100" Command="{Binding CreateModuleCommand}" Style="{StaticResource btn1}" Margin="40"  Height="40" Content="ADD">
+                <Button.OpacityMask>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FFC60C0C" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.OpacityMask>
+            </Button>
+        </StackPanel>
+
+        <ListView Grid.Column="1"  ItemsSource="{Binding Modulelist}" Margin="10,10,10,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Code" DisplayMemberBinding="{Binding Code}"/>
+                    <GridViewColumn Header="Credit" DisplayMemberBinding="{Binding Credit}"/>
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Remove" Command="{Binding DataContext.RemoveModuleCommand, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}" CommandParameter="{Binding}" />
+                                    <Button Content="Update" Command="{Binding DataContext.UpdateModuleCommand, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}" CommandParameter="{Binding}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
